@@ -1,27 +1,33 @@
-#!/usr/bin/env ruby -wKU
+#!`which ruby`
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 require 'awesome_print'
 require 'ncurses'
+
 require 'level'
+require 'rsokoban_game'
 
 begin
   window = Ncurses.initscr
   Ncurses.cbreak
-
+  Ncurses.noecho
+  
   Ncurses.keypad(window, true)
   
-  RSokoban.levels = Level.load(File.join('..', 'levels', 'default.xml'))
+  levels = RSokoban::Level.load(File.join(File.dirname(__FILE__), '..', 'levels', 'default.xml'))
+  current_level = 0
 
-  # text1 = "Oh give me a clone!\n"
-  # text2 = "Yes a clone of my own"
-  # 
-  # window.addstr(text1)
-  # window.addstr(text2)
-  # window.move(2,0) # move to third row, first column
-  # window.addstr("With the Y chromosome changed to the X.")
-  # window.refresh
-  # 
-  # window.getch
+  levels[current_level].draw(window)
+  
+  game = RSokoban::RSokobanGame.new(window)
+  levels.each do |level|
+    window.clear
+    game.play_level(level)
+  end
 ensure
+  Ncurses.echo
+  Ncurses.nocbreak
+  Ncurses.nl
   Ncurses.endwin
 end
