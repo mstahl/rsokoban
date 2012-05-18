@@ -5,46 +5,58 @@
 
 Gem::Specification.new do |s|
   s.name = "rsokoban"
-  s.version = "0.0.0"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Max Thom Stahl"]
-  s.date = "2012-05-14"
+  s.date = "2012-05-18"
   s.description = "A Sokoban clone written in Ruby using the ncurses library."
-  s.email = "max@villainousindustri.es"
+  s.email = "max@dangerouscuteness.com"
+  s.executables = ["rsokoban"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
     ".rspec",
+    ".rvmrc",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
-    "lib/rsokoban.rb",
+    "bin/rsokoban",
+    "levels/default.xml",
+    "lib/level.rb",
+    "lib/rsokoban_game.rb",
+    "rsokoban.gemspec",
     "spec/rsokoban_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/mstahl/rsokoban"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.bindir = 'bin'
-  s.rubygems_version = "1.8.15"
+  s.rubygems_version = "1.8.17"
   s.summary = "Sokoban, written in Ruby."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<happymapper>, [">= 0"])
+      s.add_runtime_dependency(%q<ncurses-ruby>, [">= 0"])
+      s.add_development_dependency(%q<awesome_print>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
     else
+      s.add_dependency(%q<happymapper>, [">= 0"])
+      s.add_dependency(%q<ncurses-ruby>, [">= 0"])
+      s.add_dependency(%q<awesome_print>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
@@ -52,6 +64,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<simplecov>, [">= 0"])
     end
   else
+    s.add_dependency(%q<happymapper>, [">= 0"])
+    s.add_dependency(%q<ncurses-ruby>, [">= 0"])
+    s.add_dependency(%q<awesome_print>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
