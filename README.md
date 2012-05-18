@@ -28,6 +28,7 @@ The following keys work in RSokoban:
   * `q` - Quit RSokoban
   * `r` - Reset level
   * `WSAD`/arrow keys - Move
+  * 'z' - Undo (unlimited)
 
 ## Contributing to rsokoban
  
