@@ -61,7 +61,7 @@ module RSokoban
       (@boxes.keys - @goals.keys).empty?
     end
     
-    def move(direction)
+    def move(direction, undoing = false)
       return unless can_move?(direction)
       
       new_player = [@player[:row], @player[:col]].zip(DIRECTIONS[direction]).map{|a, b| a + b}
@@ -76,6 +76,7 @@ module RSokoban
       @window.addstr ' '
       
       @player[:row], @player[:col] = new_player
+      @moves.push direction unless undoing
     end
     
     def play_level(level)
@@ -85,6 +86,8 @@ module RSokoban
       @boxes  = level.boxes.dup
       @player = level.player.dup
       @goals  = level.goals.dup
+      
+      @moves  = []
       
       draw
       
@@ -99,6 +102,8 @@ module RSokoban
           return play_level(level)
         when 'n'.ord
           return
+        when 'z'.ord
+          undo
         when Ncurses::KEY_DOWN, 's'.ord
           move :down
         when Ncurses::KEY_UP, 'w'.ord
@@ -112,6 +117,23 @@ module RSokoban
         draw
       end
       
+    end
+    
+    def undo
+      return if @moves.empty?
+      
+      direction = case @moves.pop
+      when :left
+        :right
+      when :right
+        :left
+      when :up
+        :down
+      when :down
+        :up
+      end
+      
+      move direction, true
     end
     
   end
