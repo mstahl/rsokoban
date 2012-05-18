@@ -4,6 +4,25 @@ Really simple Sokoban implementation in Ruby. I wrote it because I'd never writt
 
 ## How to play
 
+       #####
+       #   #
+       # $$####
+       #  $ $ #
+       #  #   #
+    ####  ##$ ######
+    #   @ ##     ..#
+    ##           ..#
+     ########### .+#
+              ######
+
+Legend:
+
+  * `@` - The player (you)
+  * `#` - Wall
+  * `$` - Box
+  * `.` - Goal
+  * `+` - Box on a goal square
+
 The following keys work in RSokoban:
 
   * `q` - Quit RSokoban
