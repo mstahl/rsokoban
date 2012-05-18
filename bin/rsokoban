@@ -12,6 +12,7 @@ begin
   window = Ncurses.initscr
   Ncurses.cbreak
   Ncurses.noecho
+  Ncurses.curs_set 0
   
   Ncurses.keypad(window, true)
   
@@ -27,6 +28,7 @@ begin
   end
 ensure
   Ncurses.echo
+  Ncurses.curs_set 1
   Ncurses.nocbreak
   Ncurses.nl
   Ncurses.endwin

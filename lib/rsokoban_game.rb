@@ -97,6 +97,8 @@ module RSokoban
         when 'r'.ord
           @window.clear
           return play_level(level)
+        when 'n'.ord
+          return
         when Ncurses::KEY_DOWN, 's'.ord
           move :down
         when Ncurses::KEY_UP, 'w'.ord
