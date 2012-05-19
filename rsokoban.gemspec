@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rsokoban"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Max Thom Stahl"]
-  s.date = "2012-05-18"
+  s.date = "2012-05-19"
   s.description = "A Sokoban clone written in Ruby using the ncurses library."
   s.email = "max@dangerouscuteness.com"
   s.executables = ["rsokoban"]
