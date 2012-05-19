@@ -61,7 +61,7 @@ module RSokoban
       (@boxes.keys - @goals.keys).empty?
     end
     
-    def move(direction, undoing = false)
+    def move(direction)
       return unless can_move?(direction)
       
       new_player = [@player[:row], @player[:col]].zip(DIRECTIONS[direction]).map{|a, b| a + b}
@@ -76,7 +76,7 @@ module RSokoban
       @window.addstr ' '
       
       @player[:row], @player[:col] = new_player
-      @moves.push direction unless undoing
+      @states.push({:player => @player.dup, :boxes => @boxes.dup})
     end
     
     def play_level(level)
@@ -87,7 +87,7 @@ module RSokoban
       @player = level.player.dup
       @goals  = level.goals.dup
       
-      @moves  = []
+      @states = [{:player => @player.dup, :boxes => @boxes.dup}]
       
       draw
       
@@ -120,20 +120,11 @@ module RSokoban
     end
     
     def undo
-      return if @moves.empty?
-      
-      direction = case @moves.pop
-      when :left
-        :right
-      when :right
-        :left
-      when :up
-        :down
-      when :down
-        :up
-      end
-      
-      move direction, true
+      state   = @states.pop
+      @boxes  = state[:boxes]
+      @player = state[:player]
+      @window.clear
+      @states.push(state) if @states.empty?
     end
     
   end
