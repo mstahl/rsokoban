@@ -30,6 +30,16 @@ The following keys work in RSokoban:
   * `WSAD`/arrow keys - Move
   * 'z' - Undo (unlimited)
 
+## Changelog
+
+### 1.0.1
+
+Fixed broken undo function (it didn't move boxes back to where they were before being pushed).
+
+### 1.0.0
+
+First version. Don't judge.
+
 ## Contributing to rsokoban
  
   * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
