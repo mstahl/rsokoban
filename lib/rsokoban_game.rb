@@ -104,13 +104,13 @@ module RSokoban
           return
         when 'z'.ord
           undo
-        when Ncurses::KEY_DOWN, 's'.ord
+        when Ncurses::KEY_DOWN, 's'.ord, 'j'.ord
           move :down
-        when Ncurses::KEY_UP, 'w'.ord
+        when Ncurses::KEY_UP, 'w'.ord, 'k'.ord
           move :up
-        when Ncurses::KEY_RIGHT, 'd'.ord
+        when Ncurses::KEY_RIGHT, 'd'.ord, 'l'.ord
           move :right
-        when Ncurses::KEY_LEFT, 'a'.ord
+        when Ncurses::KEY_LEFT, 'a'.ord, 'h'.ord
           move :left
         end
         

@@ -1,1 +1,1 @@
-rvm 1.9.3@rsokoban
+rvm 1.9.3@rsokoban --install --create
